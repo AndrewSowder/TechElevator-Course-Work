@@ -563,6 +563,9 @@ public class Exercises {
 		double percentOfCompletedTrip = (double)milesTraveled / totalDistance * 100;
 		int wholeNumberPercent = (int)percentOfCompletedTrip;
 
+
+		System.out.println(x);
+
 	}
 
 }
