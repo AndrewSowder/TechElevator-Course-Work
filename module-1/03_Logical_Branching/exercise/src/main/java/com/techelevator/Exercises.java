@@ -114,7 +114,10 @@ public class Exercises {
      posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        return false;
+        if(negative) {
+            return a < 0 && b < 0;
+        }
+        return a * b < 0;
     }
 
     /*
@@ -326,8 +329,22 @@ public class Exercises {
      yourCakeAndEatItToo(11.00, false) → "special"
      */
     public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
-
-        return "";
+        if (isBirthday) {
+            if (mealAmount >= 0 && mealAmount < 5) {
+                return "standard";
+            } else if (mealAmount >= 5 && mealAmount <= 10) {
+                return "special";
+            } else if (mealAmount > 10) {
+                return "ginormous";
+            }
+        }
+        if (mealAmount >= 0 && mealAmount <= 10) {
+            return "standard";
+        } else if (mealAmount > 10 && mealAmount <= 15) {
+            return "special";
+        } else {
+            return "ginormous";
+        }
     }
 
     /*
@@ -354,8 +371,11 @@ public class Exercises {
      alarmClock(5, false) → "7:00"
      alarmClock(0, false) → "10:00"
      */
-    public boolean alarmClock(int day, boolean vacation) {
-        return true;
+    public String alarmClock(int day, boolean vacation) {
+        if (day == 0 || day == 6) {
+            return (vacation) ? "off" : "10:00";
+        }
+        return (vacation) ? "10:00" : "7:00";
     }
 
 
@@ -367,14 +387,21 @@ public class Exercises {
      in1To10(11, true) → true
      */
     public boolean in1To10(int n, boolean outsideMode) {
-        if (n <= 1 || n >= 10 && outsideMode) {
-            return true;
-        } else if (n >= 1 && n <= 10 && !outsideMode) {
-            return true;
+        if (!outsideMode) {
+            if (n >= 1 && n <= 10) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            if (n <= 1 || n >= 10) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
+
 
     /*
      23. We'll say a number is special if it is a multiple of 11 or if it is one more than a multiple of 11.
@@ -426,7 +453,7 @@ public class Exercises {
      less20(20) → false
      */
     public boolean less20(int n) {
-        if ((n + 1) % 20 == 0 || (n  + 2) % 20 == 0) {
+        if ((n + 1) % 20 == 0 || (n + 2) % 20 == 0) {
             return true;
         } else
             return false;
@@ -588,19 +615,23 @@ public class Exercises {
      luckySum(13, 13, 3) → 0
      */
     public int luckySum(int a, int b, int c) {
-        int sum = 0;
-        if (a != 13) {
-            sum += a;
+        int answer = 0;
+
+        if(a == 13 && b== 13){
+            answer = 0;
+        } else if (a == 13) {
+            answer = c;
+        } else if (b == 13) {
+            answer = a;
+        } else if (c == 13) {
+            answer = a + b;
+        } else {
+            answer = a + b + c;
         }
-        if (a != 13 && b != 13) {
-            sum += b;
-        }
-        if (a != 13 && b != 13 && c != 13) {
-            sum += c;
-        }
-        return sum;
+        return answer;
     }
 }
+
 
 
 
