@@ -9,10 +9,10 @@ public class Lecture {
 //    }
 
         Lecture lecture = new Lecture();
-        boolean result = lecture.returnCounterFromLoop();
+        boolean result = lecture.();
         System.out.println(result);
 
-        System.out.println(evenSums);
+
     }
 
     private void evenSums() {
@@ -112,18 +112,17 @@ public class Lecture {
     /*
     9. How many times do we go through this loop? Change the number in the logic expression so that it returns true.
     */
-    public boolean returnCounterFromLoop() {
-
-        int[] arrayToLoopThrough = {3, 4, 2, 9};
-
-        int counter = 0; // Must be started outside the block so that have access to it after the block
-
-        for (int i = 0; i < arrayToLoopThrough.length; i++) {
-            counter++;
-        }
-
-        return counter == 4; // What should the number be to return true?
-    }
+//    public boolean returnCounterFromLoop() {
+//
+//        int[] arrayToLoopThrough = {3, 4, 2, 9};
+//
+//        int counter = 0; // Must be started outside the block so that have access to it after the block
+//
+//        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+//            counter++;
+//        }
+//
+//        return counter == 4; // What should the number be to return true?
 
     /*
     10. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
