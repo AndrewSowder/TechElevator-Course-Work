@@ -15,10 +15,6 @@ public class Fibonacci {
         String numberStr = scanner.nextLine();
         int n = Integer.parseInt(numberStr);
 
-        if (n <= 0) {
-            System.out.println("0" + "," + "1");
-        }
-
 
         int f = 0;
         int s = 1;
@@ -30,7 +26,11 @@ public class Fibonacci {
             f = s;
             s = next;
 
-        }
 
+            if (n == 0) {
+                System.out.println("0" + ", " + "1");
+
+            }
+        }
     }
 }

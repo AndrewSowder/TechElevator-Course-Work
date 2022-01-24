@@ -14,6 +14,8 @@ public class Lecture {
 		 * is not the case for most classes */
 
 		/* create an new instance of String using a literal */
+		String name = "Drew";
+		//char[] helloArray = String('H','E','L','L','O');
 
 		
 		System.out.println();
@@ -35,6 +37,47 @@ public class Lecture {
 		 * toUpperCase
 		 * trim
 		 */
+		String lectureString = "This is a string for Monday";
+		int length = lectureString.length();
+		System.out.println(length);
+
+		String firstFive = lectureString.substring(0,27);
+		System.out.println("firstFive = " + firstFive);
+
+
+		lectureString = lectureString.toUpperCase();
+		System.out.println(lectureString);
+
+		String concatStr = "Hello";
+		//concatStr = concatStr.concat(" Goodbye ");
+		concatStr = concatStr += " Goodbye ";
+		concatStr = concatStr + 5;
+		System.out.println(concatStr);
+
+		for(int i=0; i < concatStr.length(); i++) {
+			System.out.println(concatStr.charAt(i));
+		}
+
+		int indexOfIs = lectureString.indexOf("IS");
+		System.out.println("IndexOfIs = " + indexOfIs);
+		int indexOfSecondIs = lectureString.indexOf("IS",3);
+		System.out.println("IndexOfSecondIs = " + indexOfSecondIs);
+
+		String sentence = "The quick brown fox said Hello";
+		if(sentence.toUpperCase().contains("HELLO"));
+		System.out.println(sentence);
+
+		if (sentence.startsWith("The"));
+		System.out.println("Starts with the");
+
+
+		sentence = sentence.replace("brown","green");
+		System.out.println("sentence after replacment = " + sentence);
+		sentence = sentence.replace("e","");
+		System.out.println(sentence);
+
+		String upperSentence =
+
 
 		System.out.println();
 		System.out.println("**********************");
