@@ -5,14 +5,13 @@ public class Lecture {
     public static void main(String[] args) {
         Lecture lecture = new Lecture();
 
-        int x;
-
-        x = lecture.returnNumberAfterAddThreeAndAddFive(5, true, true);
-
-        System.out.println(x);
-
-        String fb = lecture.getFizzBuzz(15);
-        System.out.println(fb);
+        int answer = 0;
+        for(int i = 0; i < 10; i++) {
+            if(i % 2 == 0) {
+                answer = answer + i;
+            }
+        }
+        System.out.println(answer);
     }
 
     public void expressions() {
