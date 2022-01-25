@@ -267,8 +267,15 @@ public class Exercises {
      hasBad("xxbadxx") → false
      */
     public boolean hasBad(String str) {
-        return false;
+        if (str.length() < 3) {
+            return false;
+        } else if (str.substring(0, 3).equals("bad")) {
+            return true;
+        } else if (str.length() > 3) {
+            return str.substring(1, 4).equals("bad");
+        } else return false;
     }
+
 
     /*
      Given a string and a non-negative int n, return a larger string that is n copies of the original string.
@@ -309,12 +316,12 @@ public class Exercises {
      */
     public int countXX(String str) {
         int countX = 0;
-        if()
-        for (int i = 0; i < str.length() - 1; i++) {
-            if (str.substring(i, i + 2).equals("xx"));
+        for (int i = 0; i < str.length() - 1; ++i) {
+            if (str.substring(i, i + 2).equals("xx")) countX++;
         }
         return countX;
     }
+
 
     /*
      Given a string, return true if the first instance of "x" in the string is immediately followed by another "x".
@@ -323,7 +330,15 @@ public class Exercises {
      doubleX("xxxxx") → true
      */
     public boolean doubleX(String str) {
-        return false;
+        int i = str.indexOf("x");
+        if (i == -1) return false;
+
+        if (i + 1 >= str.length()) {
+            return false;
+        } else {
+
+            return str.substring(i + 1, i + 2).equals("x");
+        }
     }
 
     /*
@@ -333,7 +348,11 @@ public class Exercises {
      stringBits("Heeololeo") → "Hello"
      */
     public String stringBits(String str) {
-        return null;
+        String bits = "";
+        for (int i = 0; i < str.length(); i += 2) {
+            bits += str.charAt(i);
+        }
+        return bits;
     }
 
     /*
@@ -343,8 +362,12 @@ public class Exercises {
      stringSplosion("ab") → "aab"
      */
     public String stringSplosion(String str) {
-        return null;
+        String nextStr = "";
+        for (int i = 0; i < str.length() + 1; i++)
+            nextStr += str.substring(0, i);
+        return nextStr;
     }
+
 
     /*
      Given a string, return the count of the number of times that a substring length 2 appears in the string and
@@ -354,7 +377,18 @@ public class Exercises {
      last2("axxxaaxx") → 2
      */
     public int last2(String str) {
-        return 0;
+        int count = 0;
+        if (str.length() < 0) {
+            return 0;
+        }
+        for (int i = 0; i < str.length() - 2; i++) {
+            String endTwo = str.substring(str.length() - 2);
+            if (str.substring(i, i + 2).equals(endTwo)) {
+                count++;
+            }
+        }
+        return count;
+
     }
 
     /*
@@ -365,8 +399,14 @@ public class Exercises {
      stringX("xabxxxcdx") → "xabcdx"
      */
     public String stringX(String str) {
-        return null;
+        if (str.length()<=2)
+            return str;
+        char first = str.charAt(0);
+        char last = str.charAt(str.length() - 1);
+        str = str.substring(1, str.length() - 1).replace("x", "");
+        return first + str + last;
     }
+
 
     /*
      Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien".
@@ -375,8 +415,17 @@ public class Exercises {
      altPairs("CodingHorror") → "Congrr"
      */
     public String altPairs(String str) {
-        return null;
+        String result = "";
+        for (int i = 0; i < str.length(); i += 4) {
+            int pairs = i + 2;
+            if (pairs > str.length()) {
+                pairs = str.length();
+            }
+            result = result + str.substring(i, pairs);
+        }
+        return result;
     }
+
 
     /*
      Suppose the string "yak" is unlucky. Given a string, return a version where all the "yak" are removed.
@@ -386,7 +435,7 @@ public class Exercises {
      stringYak("yak123ya") → "123ya"
      */
     public String stringYak(String str) {
-        return null;
-    }
 
+        return str.replaceAll("y.k", "");
+    }
 }
