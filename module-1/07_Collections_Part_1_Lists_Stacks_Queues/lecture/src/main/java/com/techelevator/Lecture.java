@@ -27,6 +27,18 @@ public class Lecture {
 		zipCodes.add(0,45206);
 		System.out.println(zipCodes);
 
+		String s1 = "ALL MEN ARE CREATED EQUAL";
+		String s2 = s1.substring(16, 19);
+
+		System.out.println(s2);
+
+		String space = " ";
+		String[] pets = {"guinea pig", "cat", "dog"};
+		String joinedPets = String.join(space, pets);
+		pets = joinedPets.split(space);
+
+		System.out.println(pets[2]);
+
 
 
 
@@ -122,7 +134,7 @@ public class Lecture {
 		for(String boardGame : boardGames ){
 			System.out.println(boardGame);
 		}
-
+Double.valueOf()
 		List<Integer> nums =  new ArrayList<>(Arrays.asList(123, 456, 789));
 
 		int sum = 0;
