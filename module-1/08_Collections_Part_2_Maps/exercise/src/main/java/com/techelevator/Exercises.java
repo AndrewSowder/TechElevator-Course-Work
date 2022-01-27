@@ -34,6 +34,18 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
+		Map<String, String> animalGroupNames = new HashMap<>();
+		animalGroupNames.put ("Rhino" "Crash");
+		animalGroupNames.put("Giraffe", "Tower");
+		animalGroupNames.put("Elephant", "Herd");
+		animalGroupNames.put("Lion", "Pride");
+		animalGroupNames.put("Crow" , "Murder");
+		animalGroupNames.put("Pigeon" , "Kit");
+		animalGroupNames.put("Flamingo" , "Pat");
+		animalGroupNames.put("Deer" , "Herd");
+		animalGroupNames.put("Dog" , "Pack");
+		animalGroupNames.put("Crocodile", "Float");
+
 		return null;
 	}
 

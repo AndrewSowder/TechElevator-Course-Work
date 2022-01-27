@@ -40,17 +40,15 @@ public class Exercises {
      no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
      */
     public List<String> no4LetterWords(String[] stringArray) {
-        List<String> words = Arrays.asList(stringArray);
-        String wordsLessThan4 = "";
-        for (String word : words) {
-            if (word.length() == 4) {
-                words.add(word);
-                return words;
+        List<String> wordsNot4 = new ArrayList<>();
+        for (String word : stringArray) {
+            if (word.length() != 4) {
+                wordsNot4.add(word);
             }
-
-            return words;
         }
+        return wordsNot4;
     }
+
     /*
      Given an array of ints, divide each int by 2, and return an ArrayList of Doubles.
      arrayInt2ListDouble( {5, 8, 11, 200, 97} ) -> [2.5, 4.0, 5.5, 100, 48.5]
@@ -59,12 +57,12 @@ public class Exercises {
      */
     public List<Double> arrayInt2ListDouble(int[] intArray) {
         List<Double> doubled = new ArrayList<>();
-            for (Integer integer : intArray) {
-                double divided = (double) integer / 2;
-                doubled.add(divided);
+        for (Integer integer : intArray) {
+            double divided = (double) integer / 2;
+            doubled.add(divided);
 
-            }
-            return doubled;
+        }
+        return doubled;
 
     }
 
@@ -110,9 +108,17 @@ public class Exercises {
      foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
      */
     public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-        for (Integer value : integerList) ;
-
-        return false;
+        int total = 0;
+        for (Integer number : integerList) {
+            if (number == intToFind) {
+                total += 1;
+            }
+        }
+        if (total == 2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /*
@@ -128,9 +134,21 @@ public class Exercises {
     HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
      */
     public List<String> fizzBuzzList(Integer[] integerArray) {
-
-        return null;
+        List<String> fizzBuzz = new ArrayList<>();
+        for (Integer checked : integerArray) {
+            if (checked % 3 == 0 && checked % 5 == 0) {
+                fizzBuzz.add("FizzBuzz");
+            } else if (checked % 3 == 0) {
+                fizzBuzz.add("Fizz");
+            } else if (checked % 5 == 0) {
+                fizzBuzz.add("Buzz");
+            } else {
+                fizzBuzz.add(checked.toString());
+            }
+        }
+        return fizzBuzz;
     }
+
 
     /*
      Given two lists of Integers, interleave them beginning with the first element in the first list followed
@@ -140,7 +158,17 @@ public class Exercises {
      interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
      */
     public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-        return null;
-    }
+        List<Integer> modifiedList = new ArrayList<>();
+        for (int i = 0; i < Math.max(listOne.size(), listTwo.size()); i++) {
+            if (i < listOne.size()) {
+                modifiedList.add(listOne.get(i));
+            }
+            if (i < listTwo.size()) {
+                modifiedList.add(listTwo.get(i));
 
+
+            }
+        }
+        return modifiedList;
+    }
 }
