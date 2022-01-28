@@ -92,7 +92,7 @@ public class Exercises {
         isItOnSale.put("KITCHEN6073", 0.40);
         isItOnSale.put("BEDROOM3434", 0.60);
         isItOnSale.put("BATH0073", 0.15);
-        
+
         String keyValue = itemNumber == null ? "" : itemNumber.toUpperCase();
         if (isItOnSale.containsKey(keyValue)) {
             return (isItOnSale.get(keyValue));
