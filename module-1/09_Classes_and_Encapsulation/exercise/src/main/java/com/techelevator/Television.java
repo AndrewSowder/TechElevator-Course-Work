@@ -49,8 +49,8 @@ public class Television {
 
     public void channelDown() {
         if (isOn) {
-            if (currentChannel == 18) {
-                currentChannel = 3;
+            if (currentChannel == 3) {
+                currentChannel = 18;
             } else {
                 currentChannel--;
             }
