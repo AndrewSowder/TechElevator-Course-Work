@@ -2,7 +2,7 @@ package com.techelevator;
 
 public class Elevator {
 
-    private int currentFloor = 1;
+    private int currentFloor = 1 ;
     private int numberOfFloors;
     private boolean doorOpen;
 
@@ -39,7 +39,7 @@ public class Elevator {
     }
     public void goDown(int desiredFloor) {
         if(!doorOpen){
-            if(desiredFloor < currentFloor && desiredFloor >= numberOfFloors){
+            if(desiredFloor < currentFloor && desiredFloor >= 0){
                 currentFloor = desiredFloor;
 
             }
