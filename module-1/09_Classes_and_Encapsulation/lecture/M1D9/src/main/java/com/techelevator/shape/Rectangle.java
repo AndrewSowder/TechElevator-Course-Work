@@ -9,6 +9,7 @@ public class Rectangle {
     //Instance Variables, created for each instance of Rectangle.
     private int width;
     private int height;
+    private String label;
 
     //Constructors
     public Rectangle() {
@@ -22,6 +23,7 @@ public class Rectangle {
     public Rectangle(int width, int height) {
         this.width = width;
         this.height = height;
+
         numInstances++;
     }
 

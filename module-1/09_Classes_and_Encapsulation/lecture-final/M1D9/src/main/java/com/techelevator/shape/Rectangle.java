@@ -65,4 +65,8 @@ public class Rectangle {
     public static int getArea(int width, int height) {
         return width * height;
     }
+
+    public boolean reserveSeats(boolean forFirstClass, int totalNumberOfSeats){
+        if
+    }
 }
