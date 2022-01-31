@@ -226,6 +226,7 @@ public class Exercises {
 
     }
 
+
     /*
      * Given an array of Strings, return a Map<String, Boolean> where each different String is a key and value
      * is true only if that String appears 2 or more times in the array.
@@ -297,7 +298,6 @@ public class Exercises {
             String end = word.substring(word.length() - 2);
 
             for (int i = 0; i < word.length() - 2; i++) {
-                String subb = word.substring(i + 2);
                 if (word.substring(i, i + 2).equals(end)) {
                     count++;
                 }
