@@ -9,7 +9,7 @@ public class ReserveAuction extends Auction {
     // Not required. Inherited from the base (parent) class Auction
 //    private String itemForSale;
 //    private Bid currentHighBid;
-//    private List<Bid> allBids;
+//    private List<Bid> alBids;
 
     public ReserveAuction(String itemForSale, int reserveAmount) {
         super(itemForSale);
