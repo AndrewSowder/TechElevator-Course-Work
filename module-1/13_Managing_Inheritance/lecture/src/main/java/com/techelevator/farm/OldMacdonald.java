@@ -1,10 +1,25 @@
 package com.techelevator.farm;
 
+import com.techelevator.farm.shape.Rectangle;
+
 public class OldMacdonald {
 	public static void main(String[] args) {
 
+		Rectangle rectangle = new Rectangle(10,5);
+		//int numIst = rect
+		// FarmAnimal is abstract and can't be instantiated (right side of new).
+		//FarmAnimal watermelon = new FarmAnimal("Watermelon", "Splat");
+
+		Cow cow = new Cow();
+		cow.setAsleep(true);
+		FarmAnimal chicken = new Chicken();
+		chicken.setAsleep(true);
+		Cat cat = new Cat();
+		cat.setAsleep(true);
+
+
 		Singable[] singables =
-				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor()};
+				new Singable[] {cow, chicken,cat, new Pig(), new Tractor()};
 
 		for (Singable singable : singables) {
 			String name = singable.getName();
@@ -24,6 +39,11 @@ public class OldMacdonald {
 		for (Sellable sellable : sellables) {
 			System.out.println("Step right up and get your " + sellable.getName());
 			System.out.println("Only $" + sellable.getPrice());
+		}
+
+		FarmAnimal[] favFoods = new FarmAnimal[]{ new Cow(), new Chicken()};
+		for ( FarmAnimal animal : favFoods){
+			System.out.println(animal.getFavoriteFood());
 		}
 	}
 }

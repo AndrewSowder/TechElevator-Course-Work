@@ -61,7 +61,7 @@ public class BankCustomer {
                 return true;
             } else {
                 return false;
-                
+
             }
         }
     }
