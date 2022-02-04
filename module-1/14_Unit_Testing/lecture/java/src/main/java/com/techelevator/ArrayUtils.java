@@ -1,11 +1,21 @@
 package com.techelevator;
 
 public class ArrayUtils {
+    /**
+     *Returns the maximum value from the given Array.
+     * Returns Integer.MIN_VALUE when array is empty or null.
+     *
+     *  @param array The array to scan.
+     * @return the maximum in array or Integer.MIN_VALUE.
+     */
+
+
 
     public static int max(int[] array) {
-        int maxFound = 0;
+        //int maxFound = array [0];
+        int maxFound = Integer.MIN_VALUE;
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             if (array[i] > maxFound) {
                 maxFound = array[i];
             }
