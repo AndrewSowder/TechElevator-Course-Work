@@ -10,7 +10,7 @@ public class RTNValidator {
 	private static final int[] CHECKSUM_WEIGHTS = new int[]{3, 7, 1, 3, 7, 1, 3, 7, 1};
 	//                                                        0 28  1  0  0  0  3 14  4   Sum = 50. 50 mod 10 = 0 Valid
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 
 		printApplicationBanner();
 
@@ -52,6 +52,7 @@ public class RTNValidator {
 	}
 
 	@SuppressWarnings("resource")
+<<<<<<< HEAD
 	/*private static File getInputFileFromUser() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.print("Please enter path to input file >>> ");
@@ -77,6 +78,36 @@ public class RTNValidator {
 			String fileName = userInput.nextLine();
 			inputFile = new File(fileName);
 		} while (!inputFile.exists() || !inputFile.isFile());
+=======
+//	private static File getInputFileFromUser() {
+//		Scanner userInput = new Scanner(System.in);
+//		System.out.print("Please enter path to input file >>> ");
+//		String path = userInput.nextLine();
+//
+//		File inputFile = new File(path);
+////		if(inputFile.exists() == false) { // checks for the existence of a file
+////			System.out.println(path+" does not exist");
+////			System.exit(1); // Ends the program
+////		} else if(inputFile.isFile() == false) {
+////			System.out.println(path+" is not a file");
+////			System.exit(1); // Ends the program
+////		}
+//		return inputFile;
+//	}
+
+	private static File getInputFileFromUser() {
+		File inputFile = null;
+		Scanner userInput = new Scanner(System.in);
+
+		do {
+			System.out.print("Please enter path to input file>>> ");
+			String filename = userInput.nextLine();
+			inputFile = new File(filename);
+			//} while (!inputFile.exists() || !inputFile.isFile());
+		} while (!(inputFile.exists() && inputFile.isFile()));
+		//           false           ||          true
+
+>>>>>>> 2a6d9ac3356baa0d290a5d156e12ad051cc82bdb
 		return inputFile;
 	}
 
