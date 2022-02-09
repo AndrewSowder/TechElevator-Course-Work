@@ -12,14 +12,6 @@ public class FindAndReplace {
 
         PrintWriter dataOutput = new PrintWriter(System.out);
 
-        System.out.println("What is the name of the file you wish to search?");
-        File fileToSearch = new File(userInput.nextLine());
-        System.out.println("What is the word you wish to search?");
-        String searchWord = userInput.nextLine();
-        System.out.println("Should the search be case sensitive? (Y)es/(N)o");
-        String caseSensitive = userInput.nextLine();
-        userInput.close();
-        Scanner fileScanner = new Scanner(fileToSearch);
 
 
 
