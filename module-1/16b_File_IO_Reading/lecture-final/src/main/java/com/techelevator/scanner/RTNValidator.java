@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class RTNValidator {
 
 	// PNC Routing number                                     0  4  1  0  0  0  1  2  4
-	private static final int[] CHECKSUM_WEIGHTS = new int[] { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
+	private static final int[] CHECKSUM_WEIGHTS = new int[]{3, 7, 1, 3, 7, 1, 3, 7, 1};
 	//                                                        0 28  1  0  0  0  3 14  4   Sum = 50. 50 mod 10 = 0 Valid
 
 	public static void main(String[] args) throws FileNotFoundException {
@@ -16,8 +16,8 @@ public class RTNValidator {
 
 		File inputFile = getInputFileFromUser();
 		//Scanner fileScanner; <- Doesn't work
-		try(Scanner fileScanner = new Scanner(inputFile)) {
-			while(fileScanner.hasNextLine()) {
+		try (Scanner fileScanner = new Scanner(inputFile)) {
+			while (fileScanner.hasNextLine()) {
 				String line = fileScanner.nextLine();
 				if (line.length() < 9) {
 					System.out.println(line);
@@ -52,21 +52,35 @@ public class RTNValidator {
 	}
 
 	@SuppressWarnings("resource")
-	private static File getInputFileFromUser() {
+	/*private static File getInputFileFromUser() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.print("Please enter path to input file >>> ");
 		String path = userInput.nextLine();
 
-			File inputFile = new File(path);
-		if(!inputFile.exists()) { // checks for the existence of a file
-			System.out.println(path+" does not exist");
+		File inputFile = new File(path);
+		if (!inputFile.exists()) { // checks for the existence of a file
+			System.out.println(path + " does not exist");
 			System.exit(1); // Ends the program
-		} else if(!inputFile.isFile()) {
-			System.out.println(path+" is not a file");
+		} else if (!inputFile.isFile()) {
+			System.out.println(path + " is not a file");
 			System.exit(1); // Ends the program
-		}
+
+		//return inputFile;
+
+	}*/
+	private static File getInputFileFromUser() {
+		File inputFile = null;
+		Scanner userInput = new Scanner(System.in);
+
+		do {
+			System.out.println("Please enter file path");
+			String fileName = userInput.nextLine();
+			inputFile = new File(fileName);
+		} while (!inputFile.exists() || !inputFile.isFile());
 		return inputFile;
 	}
+
+
 
 	private static boolean checksumIsValid(String routingNumber) {
 		try {
