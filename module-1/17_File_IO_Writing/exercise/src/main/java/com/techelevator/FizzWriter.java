@@ -9,58 +9,45 @@ import java.util.Scanner;
 public class FizzWriter {
 
 
-	public static void main (String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
-		int fizzBuzzLimit;
+        Scanner userInput = new Scanner(System.in);
 
-        do {
-            System.out.println("Please choose a number for FizzBuzz between 1 - 300 (inclusive)");
-            Scanner userInput = new Scanner(System.in);
-            fizzBuzzLimit = Integer.parseInt(userInput.nextLine());
-
-
-        } while (fizzBuzzLimit <= 0 || fizzBuzzLimit > 300);
-
-		System.out.println("Please choose a destination file: ");
-		Scanner outputScanner = new Scanner(System.in);
-		String output = outputScanner.nextLine();
-		File outputFile = new File(output);
+        File destinationFile;
+        System.out.println("What is the destination file?");
+        String path = userInput.nextLine();
+        destinationFile = new File(path);
+        destinationFile.createNewFile();
 
 
-        try {
-            outputFile.createNewFile();
-        } catch (IOException e) {
-            System.out.println("Unable to create new file");
-        }
 
-        fizzBuzz(fizzBuzzLimit, outputFile);
-    }
+            try (PrintWriter writer = new PrintWriter(destinationFile.getAbsoluteFile())) {
 
-    private static void fizzBuzz(int inputNumber, File outputFile) {
-        try (PrintWriter writer = new PrintWriter(outputFile)) {
-            for(int i = 1; i <= inputNumber; i++) {
-                String number;
-                String inputAsString = Integer.toString(i);
-                if ((i % 3 == 0 && i % 5 == 0) || (inputAsString.contains("3") && inputAsString.contains("5"))) {
-                    number = "FizzBuzz";
-                    writer.println(number);
-                } else if ((i % 3 == 0) || inputAsString.contains("3")) {
-                    number = "Fizz";
-                    writer.println(number);
-                } else if ((i % 5 == 0) || inputAsString.contains("5")) {
-                    number = "Buzz";
-                    writer.println(number);
-                } else {
-                    number = Integer.toString(i);
-                    writer.println(number);
+
+                    for (int i = 1; i <= 300; i++) {
+
+                    if (i % 3 == 0 && i % 5 == 0) {
+                        writer.println("FizzBuzz");
+
+                    } else if (i % 3 == 0) {
+                        writer.println("Fizz");
+
+                    } else if (i % 5 == 0) {
+                        writer.println("Buzz");
+
+                    } else {
+                        writer.println(i);
+                    }
                 }
-
+                System.out.println("File created in destination");
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found");
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file");
+
         }
-        System.out.println("Please check your desktop for the file");
     }
 
-}
+
+
+
