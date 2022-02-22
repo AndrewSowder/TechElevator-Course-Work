@@ -37,7 +37,9 @@ public class JdbcCityDao implements CityDao {
                      "WHERE state_abbreviation = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation);
         while (results.next()) {
-            cities.add(mapRowToCity(results));
+           /* cities.add(mapRowToCity(results));*/
+            City city = mapRowToCity(results);
+            cities.add(city);
         }
         return cities;
     }
@@ -46,10 +48,15 @@ public class JdbcCityDao implements CityDao {
     public City createCity(City city) {
         String sql = "INSERT INTO city (city_name, state_abbreviation, population, area) " +
                      "VALUES (?, ?, ?, ?) RETURNING city_id;";
-        Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                city.getCityName(), city.getStateAbbreviation(), city.getPopulation(), city.getArea());
+        Long newId = jdbcTemplate.queryForObject(sql,
+                Long.class,
+                city.getCityName(),
+                city.getStateAbbreviation(),
+                city.getPopulation(),
+                city.getArea());
 
-        return getCity(newId);
+        City newcity = getCity(newId);
+        return newcity;
     }
 
     @Override
