@@ -21,7 +21,7 @@ public class JdbcProjectDao implements ProjectDao {
 
     @Override
     public Project getProject(Long projectId) {
-        Project project = new Project();
+        Project project = null;
         String sql = "Select project_id, name, from_date, to_date " +
                 "FROM project " +
                 "WHERE project_id = ?;";
@@ -38,13 +38,12 @@ public class JdbcProjectDao implements ProjectDao {
     @Override
     public List<Project> getAllProjects() {
         List<Project> projects = new ArrayList<>();
-        Project project = new Project();
         String sql = "Select project_id, name, from_date, to_date " +
                 "FROM project;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
 
-            project = mapRowToProject(results);
+            Project project = mapRowToProject(results);
 
             projects.add(project);
 
@@ -68,14 +67,20 @@ public class JdbcProjectDao implements ProjectDao {
 
     @Override
     public void deleteProject(Long projectId) {
-        String sqlDeletelink  =
+        String sqlDeleteProjectEmployee  =
                 " DELETE FROM project_employee"+
                 " WHERE project_id = ?;";
+
+        String sqlDeleteTimeSheet =
+                " DELETE FROM timesheet"+
+                        " WHERE project_id = ?;";
+
         String sqlDelete = "DELETE FROM project" +
                 " WHERE project_id = ?;";
 
-        jdbcTemplate.update(sqlDeletelink, projectId);
-        jdbcTemplate.update(sqlDelete,projectId);
+        jdbcTemplate.update(sqlDeleteProjectEmployee, projectId);
+        jdbcTemplate.update(sqlDeleteTimeSheet, projectId);
+        jdbcTemplate.update(sqlDelete, projectId);
 
     }
 

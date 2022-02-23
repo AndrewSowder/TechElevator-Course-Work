@@ -37,7 +37,6 @@ public class JdbcCityDao implements CityDao {
                      "WHERE state_abbreviation = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation);
         while (results.next()) {
-           /* cities.add(mapRowToCity(results));*/
             City city = mapRowToCity(results);
             cities.add(city);
         }
