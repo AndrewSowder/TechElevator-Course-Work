@@ -7,23 +7,11 @@ import java.util.*;
 
 public class Module1CodingCheckpoint {
 
-    boolean requiresCleaning;
-
-    boolean usedMiniBar;
-
-    private String name;
-
-    private int numberOfNights;
-
-    private double estimatedTotal;
-
-    private double dailyRate;
 
     public static void main(String[] args) {
 
-        Map<String, Integer> guest = new HashMap<>();
-        HotelReservation hotelReservation = new HotelReservation("guest",9);
         List<HotelReservation> reservationList = new ArrayList<>();
+
 
         String path = "C:\\Users\\Student\\workspace\\andrew-sowder-student-code\\module-1\\checkpoint\\data-files\\HotelInput.csv";
 
@@ -32,31 +20,35 @@ public class Module1CodingCheckpoint {
         try (Scanner scanner = new Scanner(file)) {
 
 
-            // Trying to read csv file and seperate the guest name from the number of night and store that into a map.
-
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] sortArry = line.split(",");
-                String guestName = sortArry[0];
-                Integer numNights = Integer.parseInt(sortArry[1].trim());
-                hotelReservation.setName(guestName);
-                hotelReservation.setNumberOfNights(numNights);
+                String[] splitLine = line.split(",");
+                String name = splitLine[0];
+                String temp = splitLine[1].trim();
+                Integer numNights = Integer.parseInt(temp);
+                HotelReservation hotelReservation = new HotelReservation(name, numNights);
+                reservationList.add(hotelReservation);
+
             }
-            System.out.println(hotelReservation);
+            System.out.println(reservationList.toString());
+
+            double reservationListTotalSum = 0.0;
+            for (HotelReservation reservation : reservationList) {
+                reservationListTotalSum += reservation.getEstimatedTotal();
+
+            }
+            System.out.println(reservationListTotalSum);
+
+            HotelReservation hotelReservation = new HotelReservation("Mickey Mouse", 10);
+            System.out.println(hotelReservation.calculateActualTotal(true,true));
+            System.out.println(hotelReservation.calculateActualTotal(true,true));
 
 
 
-
-
-
-
-
-
-
-
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+
 
     }
 }

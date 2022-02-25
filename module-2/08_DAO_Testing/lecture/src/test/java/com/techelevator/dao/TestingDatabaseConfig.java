@@ -39,6 +39,7 @@ public class TestingDatabaseConfig {
     /* This method creates the temporary database to be used for the tests. */
     @PostConstruct
     public void setup() {
+        System.out.println("createDatabase");
         if (System.getenv("DB_HOST") == null) {
             adminDataSource = new SingleConnectionDataSource();
             adminDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
@@ -53,6 +54,7 @@ public class TestingDatabaseConfig {
     /* Before any tests are run, this method initializes the datasource and populates the testing db. */
     @Bean
     public DataSource dataSource() throws SQLException {
+        System.out.println("configure connection");
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", DB_HOST, DB_PORT, DB_NAME));
         dataSource.setUsername(DB_USER);
@@ -73,6 +75,7 @@ public class TestingDatabaseConfig {
     /* This method runs after all the tests and removes the temporary database. */
     @PreDestroy
     public void cleanup() {
+        System.out.println("dropDatabase");
         if (adminDataSource != null) {
             adminJdbcTemplate.update("DROP DATABASE \"" + DB_NAME + "\";");
             adminDataSource.destroy();

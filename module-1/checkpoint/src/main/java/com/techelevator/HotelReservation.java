@@ -10,9 +10,11 @@ public class HotelReservation {
 
    private int numberOfNights;
 
-   private double estimatedTotal;
+   private static final double DAILY_RATE = 59.99;
 
-   private double dailyRate;
+   private static final double MINI_BAR_FEE = 12.99;
+
+   private static final double ROOM_CLEAN_FEE = 34.99;
 
 
    // Constructor
@@ -39,7 +41,7 @@ public class HotelReservation {
       this.name = name;
    }
 
-   public int getNumberOfNights() {
+   public double getNumberOfNights() {
       return numberOfNights;
    }
 
@@ -48,39 +50,35 @@ public class HotelReservation {
    }
 
    public double getEstimatedTotal() {
-      estimatedTotal = estimatedTotal;
-      return estimatedTotal;
+       return (DAILY_RATE * numberOfNights);
+
    }
 
-   public void setEstimatedTotal(double estimatedTotal) {
-      this.estimatedTotal = estimatedTotal;
-   }
 
    public double getDailyRate() {
-      return dailyRate;
+      return DAILY_RATE;
    }
 
-   public void setDailyRate(double dailyRate) {
-      this.dailyRate = dailyRate;
-   }
 
 
    public double calculateActualTotal(boolean requiresCleaning, boolean usedMiniBar) {
-      this.requiresCleaning = requiresCleaning;
-      this.usedMiniBar = requiresCleaning;
-      double miniBarFee = 12.99;
-      double roomCleanFee = 34.99;
 
-      if (usedMiniBar && !requiresCleaning) {
-         estimatedTotal = estimatedTotal + miniBarFee;
-      } else if (!usedMiniBar && requiresCleaning) {
-         estimatedTotal = estimatedTotal + roomCleanFee;
-      } else if (usedMiniBar && requiresCleaning) {
-         estimatedTotal = estimatedTotal + miniBarFee + (roomCleanFee * 2);
+      double actualTotal = getEstimatedTotal();
+
+      if (usedMiniBar && requiresCleaning) {
+          actualTotal = getEstimatedTotal()+ MINI_BAR_FEE + (ROOM_CLEAN_FEE * 2);
+      } else if (requiresCleaning) {
+         actualTotal = getEstimatedTotal() + ROOM_CLEAN_FEE;
+      } else if (usedMiniBar) {
+          actualTotal = getEstimatedTotal() + MINI_BAR_FEE;
       }
-      return estimatedTotal;
+      return actualTotal;
 
    }
+   @Override
+    public String toString() {
+        return "RESERVATION - " + getName() + " - " + getEstimatedTotal();
+    }
 }
 
 

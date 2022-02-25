@@ -20,6 +20,7 @@ public abstract class BaseDaoTests {
      * everything is clean for the next test */
     @After
     public void rollback() throws SQLException {
+        System.out.println("rollback");
         dataSource.getConnection().rollback();
     }
 
