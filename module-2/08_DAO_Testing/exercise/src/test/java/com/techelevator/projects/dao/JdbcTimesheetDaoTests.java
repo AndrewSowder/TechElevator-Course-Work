@@ -88,11 +88,9 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
         Timesheet createdTimesheet = sut.createTimesheet(expectedTimesheet);
 
-        long newId = createdTimesheet.getTimesheetId();
+        Timesheet actualTimesheet = sut.getTimesheet(createdTimesheet.getTimesheetId());
 
-        Timesheet retrievedTimesheet = sut.getTimesheet(newId);
-git 
-        assertTimesheetsMatch(expectedTimesheet,retrievedTimesheet);
+        assertTimesheetsMatch(createdTimesheet,actualTimesheet);
 
     }
 

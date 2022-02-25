@@ -33,11 +33,11 @@ How did you fix this bug? I updated the WHERE clause to only retrieve those that
 
 Bug 4
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: updated_timesheet_has_expected_values_when_retrieved
 
-Expected output:
+Expected output: updated_timesheet should equal returned timesheet from query search.
 
-Actual output:
+Actual output: Update timesheet didn't set billable to true or false.
 
-How did you fix this bug?
+How did you fix this bug? I updated SQL statement to set value for billable and added isBillable() to updated timesheet.
 
