@@ -1,3 +1,5 @@
+package com.techelevator;
+
 public class Katas {
 
 
@@ -15,13 +17,15 @@ swapEnds([8, 6, 7, 9, 5]) → [5, 6, 7, 9, 8]
     public int[] SwapEnds(int[] nums) {
 
         int first = nums[0];
-        int last = nums[nums.length-1];
-        for (int i = 1; i < nums.length ; i++) {
-            System.out.println(first + i + last);
+        int last = nums.length - 1;
 
-        }
-
-
+        nums[0] = last;
+        nums[nums.length - 1] = first;
         return nums;
+
     }
+
+
 }
+
+
