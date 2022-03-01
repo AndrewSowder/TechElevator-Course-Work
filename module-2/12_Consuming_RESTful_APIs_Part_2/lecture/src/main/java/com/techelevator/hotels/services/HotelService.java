@@ -3,22 +3,36 @@ package com.techelevator.hotels.services;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
 import com.techelevator.util.BasicLogger;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class HotelService {
 
     private static final String API_BASE_URL = "http://localhost:3000/";
     private final RestTemplate restTemplate = new RestTemplate();
+    private final HttpHeaders headers = new HttpHeaders();
+
 
     /**
      * Create a new reservation in the hotel reservation system
      */
     public Reservation addReservation(Reservation newReservation) {
-        // TODO: Implement method
-        return null;
+        //content
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Reservation> entity = new HttpEntity<>(newReservation, headers);
+
+        //sent to api
+        newReservation = restTemplate.postForObject(API_BASE_URL + "reservations", entity, Reservation.class);
+
+        return newReservation;
     }
 
     /**
@@ -26,15 +40,33 @@ public class HotelService {
      * reservation
      */
     public boolean updateReservation(Reservation updatedReservation) {
-        // TODO: Implement method
-        return false;
+        String url = API_BASE_URL + "reservations/" + updatedReservation.getId();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Reservation> entity = new HttpEntity<>(updatedReservation, headers);
+
+        this.restTemplate.put(url, entity);
+
+        return true;
     }
+
 
     /**
      * Delete an existing reservation
      */
     public boolean deleteReservation(int id) {
-        // TODO: Implement method
+
+        try {
+            restTemplate.delete(API_BASE_URL + "reservations/" + id);
+            return true;
+        } catch (RestClientResponseException e) {
+            // handles exceptions thrown by rest template and contains status codes
+            BasicLogger.log(e.getRawStatusCode() + " : " + e.getStatusText());
+
+            //Map<String, String> params = new HashMap<>();
+            //params.put("id", Integer.toString(id));
+            //restTemplate.delete(API_BASE_URL + "reservations/{id});
+
+        }
         return false;
     }
 
