@@ -8,6 +8,7 @@ public interface HotelDao {
 
     List<Hotel> list();
 
+
     void create(Hotel hotel);
 
     Hotel get(int id);
