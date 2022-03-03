@@ -24,6 +24,16 @@ public void SwapEnds() {
 
     }
 
+    @Test
+    public void Has12() {
+
+        int [] test = new int[]{1, 7, 3, 4, 2};
+
+        Assert.assertTrue(katas.Has12(test));
+
+
+    }
+
 
 
 
