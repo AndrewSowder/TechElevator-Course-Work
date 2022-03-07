@@ -33,6 +33,25 @@ public void SwapEnds() {
 
 
     }
+    @Test
+    public void GreenTicket(){
+
+        Assert.assertEquals(0, katas.GreenTicket(1,2,3));
+        Assert.assertEquals(10, katas.GreenTicket(1,3,3));
+        Assert.assertEquals(20, katas.GreenTicket(3,3,3));
+    }
+
+    @Test
+    public void Start1(){
+        int [] a = {1, 7, 3, 4, 2};
+        int [] b = {1, 3, 5, 8, 2};
+
+        int [] c = {3, 7, 3, 4, 2};
+        int [] d = {1, 3, 5, 8, 2};
+
+        assertEquals(2, katas.Start1(a,b));
+        assertEquals(1,katas.Start1(c,d));
+    }
 
 
 

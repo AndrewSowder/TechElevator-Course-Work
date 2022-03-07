@@ -1,6 +1,6 @@
 package com.techelevator.hotels.services;
 
-import com.techelevator.hotels.model.City;
+importcom.techelevator.hotels.model.City;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Review;
 import org.springframework.http.ResponseEntity;

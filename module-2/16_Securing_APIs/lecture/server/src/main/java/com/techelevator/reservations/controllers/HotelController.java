@@ -9,12 +9,14 @@ import com.techelevator.reservations.exception.ReservationNotFoundException;
 import com.techelevator.reservations.model.Hotel;
 import com.techelevator.reservations.model.Reservation;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-
+@PreAuthorize("isAuthenticated()")
 @RestController
 public class HotelController {
 
@@ -42,6 +44,7 @@ public class HotelController {
      * @param id the id of the hotel
      * @return all info for a given hotel
      */
+
     @RequestMapping(path = "/hotels/{id}", method = RequestMethod.GET)
     public Hotel get(@PathVariable int id) {
         return hotelDao.get(id);
@@ -110,9 +113,11 @@ public class HotelController {
      * @param id
      * @throws ReservationNotFoundException
      */
+
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/reservations/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable int id) throws ReservationNotFoundException {
+    public void delete(@PathVariable int id, Principal principal) throws ReservationNotFoundException {
         auditLog("delete", id, "username");
         reservationDao.delete(id);
     }

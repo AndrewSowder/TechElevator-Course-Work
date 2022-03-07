@@ -26,7 +26,7 @@ public class App {
                 consoleService.printHotels(hotels);
             } else if (menuSelection == 2) {
                 Review[] reviews = hotelService.listReviews();
-                consoleService.printReviews(reviews);
+                consoleService.printReviews(rgeviews);
             } else if (menuSelection == 3) {
                 Hotel hotel = hotelService.getHotelById(1);
                 consoleService.printHotel(hotel);
