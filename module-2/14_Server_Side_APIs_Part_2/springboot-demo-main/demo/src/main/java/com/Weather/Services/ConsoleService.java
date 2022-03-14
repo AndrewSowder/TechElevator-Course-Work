@@ -1,6 +1,8 @@
-package com.Weather;
+package com.Weather.Services;
 
 
+import com.Weather.model.Location;
+import com.Weather.model.Weather;
 
 import java.util.Scanner;
 
@@ -22,18 +24,18 @@ public class ConsoleService {
     public void printMainMenu() {
         System.out.println();
         System.out.println("----Online Weather Service----");
-        System.out.println("1: Display weather info by U.S City");
+        System.out.println("1: Display location info by city name");
+        System.out.println("2: Get current weather info by city name");
         System.out.println("0: Exit");
         System.out.println();
     }
-
 
 
     public String promptForCityName() {
         String cityName;
         System.out.println("--------------------------------------------");
         System.out.print("Enter city to search for: ");
-        cityName =  scanner.nextLine();
+        cityName = scanner.nextLine();
         return cityName;
     }
 
@@ -47,7 +49,6 @@ public class ConsoleService {
     }
 
 
-
     public void printWeather(Weather weather) {
         System.out.println("--------------------------------------------");
         System.out.println("Weather Details");
@@ -55,12 +56,22 @@ public class ConsoleService {
         if (weather == null) {
             System.out.println("No info to print");
         } else {
-            System.out.println("Id: " + weather.getId());
-            System.out.println("City Name: " + weather.getCityName());
-            System.out.println("Current Temperature: " + weather.getCurrentTemp());
-            System.out.println("Highest Temperature: " + weather.getHighestTemp());
-            System.out.println("Lowest Temperature: " + weather.getLowestTemp());
+            System.out.println(weather.toString());
 
+        }
+
+    }
+
+    public void printLocation(Location[] locations) {
+        System.out.println("--------------------------------------------");
+        System.out.println("Location");
+        System.out.println("--------------------------------------------");
+        if (locations == null) {
+            System.out.println("No info to print");
+        } else {
+            for (Location location : locations) {
+                System.out.println(location.toString());
+            }
         }
     }
 

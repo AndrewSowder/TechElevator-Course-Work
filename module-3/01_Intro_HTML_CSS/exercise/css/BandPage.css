@@ -1,0 +1,18 @@
+body{
+    background-color:azure;
+}
+header{
+    text-align: center;
+}
+img {
+    height: 300px;
+    width: 300px;
+}
+h2{
+    text-decoration: underline;
+}
+blockquote{
+    font-style: italic;
+
+}
+
