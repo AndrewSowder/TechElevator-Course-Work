@@ -50,3 +50,116 @@ header img {
 #student-picture img{
     border-radius: 50%;
 }
+
+#headline{
+    grid-area: heading;
+}
+
+#student-picture{
+    grid-area: picture;
+    text-align: center;
+}
+
+#student-quote{
+    grid-area: quote;
+}
+
+#student-profile{
+    grid-area: profile;
+}
+#student-contact{
+    grid-area: contact;
+    text-align: center;
+}
+
+#main-grid{
+    display: grid;
+    row-gap: 20px;
+    column-gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    "heading    heading    picture"
+    "quote      quote      picture" 
+    "profile    profile    contact"
+    "experience experience experience";
+    align-items: center;
+}
+
+#experience-grid {
+    grid-area: experience;
+    display: grid;
+    row-gap: 20px;
+    column-gap: 50px;
+    grid-template-areas:
+    "  code     code"
+    "database database"
+    "   web   design";
+    grid-template-columns: 1fr 1fr;
+
+}
+
+#experience-code {
+    grid-area: code;
+}
+
+#experience-database {
+    grid-area: database;
+}
+
+#experience-web {
+    grid-area: web; 
+}
+
+#experience-design{
+    grid-area: design;
+
+} 
+
+
+@media only screen and (max-width: 1024px) {
+    #main-grid {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 35px;
+        grid-template-areas : 
+    "heading    heading"
+    "quote      picture" 
+    "quote      contact"
+    "profile    profile"
+    "experience experience";
+    }
+
+    #experience-grid {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 20px;
+        grid-template-areas:
+        "code     web"
+        "database design";
+    }
+    
+}
+
+@media only screen and (max-width: 450px) {
+    #main-grid {
+        grid-template-columns: 100%;
+        grid-template-areas : 
+        "heading"
+    "picture" 
+    "contact"
+    "quote"
+    "profile"
+    "experience";
+    
+    }
+
+    #experience-grid {
+        grid-template-columns: 100%;
+        grid-template-areas:
+        "code"
+        "web"
+        "database"
+        "design";
+    }
+    
+}
