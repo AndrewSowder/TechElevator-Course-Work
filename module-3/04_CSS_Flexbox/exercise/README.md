@@ -66,7 +66,7 @@ Your task is to use flexbox to display the navigation items (the locations) in a
 
 ![Header step 1 after](./img/part1-1-1-after.png)
 
-Look at the structure of the HTML in `index.html`, and decide which element needs to be changed to a flex container. Remember that the _direct children_ of the flex container are the flex items. You want each of the list items (`<li>`) to be flex items, so you want to change the parent element to a flex container.
+Look at the structure of the HTML in `index.html`, and decide which element needs to be changed to a flex container. Remember that the _direct children_ of the flex container are the flex items. You   want each of the list items (`<li>`) to be flex items, so you want to change the parent element to a flex container.
 
 * **Action**: Edit `step-1\style.css` to apply the appropriate styling.
 
