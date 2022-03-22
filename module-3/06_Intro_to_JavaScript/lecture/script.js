@@ -9,10 +9,33 @@
  * They don't have a return type and the naming convention is camel-case.
  */
 function variables() {
+
   // Declares a variable where the value cannot be changed
-  // Declares a variable those value can be changed
+  const PI = 3.14159;
+
+   // Declares a variable those value can be changed
+  let greeting = 'Hello'; //"Hello"
+  greeting = 'Howdy';
+
+  console.log(`typeof greeting is ${typeof greeting}`);
+
+  greeting = 5;
+
+  console.log(`typeof greeting is ${typeof greeting}`);
+ 
+
   // Declares a variable that will always be an array
+
+  const planets =['Mercury'];
+  console.log(`typeof planets is ${typeof planets}`);
+
+  planets.push('Venus');
+
+
+  return "done";
 }
+
+
 
 /**
  * Functions can also accept parameters.
@@ -24,6 +47,8 @@ function printParameters(param1, param2) {
   console.log(`The value of param1 is ${param1}`);
   console.log(`The value of param2 is ${param2}`);
 }
+
+printParameters('Runs', 'when Read');
 
 /**
  * Compares two values x and y.
@@ -70,16 +95,36 @@ function objects() {
       "Milton Waddams",
       "Samir Nagheenanajar",
       "Michael Bolton"
-    ]
+    ],
+    address:{
+      lineOne:"123 Main St",
+      state:"Kansas"
+    }
   };
 
   // Log the object
 
   // Log the first and last name
+console.log(person);
+console.table(person);
 
+console.log(`Person's state is ${person.address.state} `);
   // Log each employee
+
+  console.log(`The Employees are
+  ${person.employees}`);
+
+
+//Traditional For Loop
+for (let i = 0; i < person.employees.length; i++) {
+  console.log(`Employee #${i + 1}: ${person.employees[i]}`)
 }
 
+for(let employee of person.employees){
+  console.log(employee);
+
+}
+}
 /*
 ########################
 Function Overloading
@@ -138,4 +183,13 @@ function stringFunctions(value) {
         - trim()
         - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
     */
+}
+
+function arrayFunction(){
+  let daysOfWeek = ['Monday'];
+
+  daysOfWeek.push('Tuesday')
+
+  console.log(daysOfWeek)
+
 }
