@@ -28,6 +28,11 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+function multiplyTogether(num1 , num2){
+  let result = num1 * num2;
+  return result;
+}
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -38,6 +43,20 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+
+ function multiplyTogether(num1 , num2){
+
+  if (num1 == null || num1 == NaN){
+    let num1 = 0;
+  }
+  if (num2 == null || num2 == NaN){
+    let num2 = 0;
+  }
+  let result = num1 * num2;
+  return result;
+}
+
+
 
 
  
@@ -92,6 +111,10 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
   return description + listOfQuirks.join(separator);
 }
 
+function printValue(value, index, origArray){
+  HTMLFormControlsCollection.log(`In printVale at index ${index} with value ${value} or array ${origArray} `)
+}
+
 /**
  * Takes an array and, using the power of anonymous functions, generates
  * their sum.
@@ -100,8 +123,13 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce((preVal, curVal) => {
+    let newVal = preVal + curVal;
+    console.log(`preval : ${preVal} curVal: $curVal : ${curVal} : newVal: ${newVal}`)
+    return newVal;
+  });
 }
+
 
 /**
  * Takes an array and returns a new array of only numbers that are
@@ -111,4 +139,38 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThreeV2(numbersToFilter) {
+
+  return numbersToFilter.filter((value) => {
+    return value % 3 === 0;
+  });
+}
+
+function allDivisibleByThree(numbersToFilter) {
+
+  return numbersToFilter.filter(value => value % 3 === 0);
+}
+
+function arrayToString(array){
+  return array.reduce((preVal, curval) => {
+    return preVal + String(curval);
+  });
+}
+
+function addEvenNumbers(arrayToSum) {
+  return arrayToSum.reduce((preVal, curVal) => {
+    console.log(`preVal: ${preVal} curVal: ${curVal}`)
+    if(curVal % 2 === 0){
+      return preVal + curVal;
+    }else{ 
+      return preVal;
+    }
+  }, 0);
+
+}
+
+function squareNumbers(numsToSquare){
+  return numsToSquare.map(num => num * num);
+}
+
+

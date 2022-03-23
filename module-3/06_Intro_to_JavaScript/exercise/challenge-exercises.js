@@ -16,21 +16,21 @@
 // I wanted to iterate through the inputted string once to get the number of Odds and Evens.
 // Then go through it and again if a number was odd and if there was more evens than odds
 //return the index of that number + 1 since elements start at one and vice versa. 
-function iqTest(numStr) {
+/* function iqTest(numStr) {
     let evenCount;
     let oddCount;
 
-    let array = numStr.split(" ");
-    array.oddCount
+
+    const array = numStr.split(" ");
 
     for (let i = 0; i < array.length; i++) {
-        if (array[i.valueOf] % 2 == 0) {
+        if (array[i.toNumber] % 2 == 0) {
             evenCount += 1;
         } else oddCount += 1;
     }
 
     for (let i = 0; i > array.length; i++) {
-        if (array[i.valueOf] % 2 == 0 && evenCount < oddCount) {
+        if (array[i.toNumber] % 2 == 0 && evenCount < oddCount) {
             return array.indexOf(i) + 1;
 
         } else if (array[i.toNumber] % 2 > 0 && oddCount > evenCount) {
@@ -39,7 +39,9 @@ function iqTest(numStr) {
 
     } return 0;
 
-}
+} */
+
+
 
 
 
