@@ -76,21 +76,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // set the variable called display equal to the display element
   // HINT: use its id #display to get a reference to it
-  display = document.getElementById('display');
+  display = document.querySelector('#display');
 
   // get a reference to all of the numbers
   // loop over each of the numbers
   // add a click event listener to each number to call the function clickNumber
   let numberBtns = document.querySelectorAll('.number');
   numberBtns.forEach(num => {
-    numberBtns.addEventListener('click', clickNumber);
+    num.addEventListener('click', clickNumber);
   });
 
   // get a reference to the decimal point button
   // add a click event listener to call the function clickNumber
   // the decimal point is part of the number so append it
 
-  let decimalButton = querySelector('.decimal');
+  let decimalButton = document.querySelector('.decimal');
   decimalButton.addEventListener('click', clickNumber);
 
 
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // loop over each of the operators
   // add a click event listener to each operator to call the function clickOperator
 
-  let operators = querySelectorAll('.operator');
+  let operators = document.querySelectorAll('.operator');
   operators.forEach(sign => {
     sign.addEventListener('click', clickOperator)
 
