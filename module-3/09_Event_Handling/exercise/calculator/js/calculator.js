@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // get a reference to all of the numbers
   // loop over each of the numbers
   // add a click event listener to each number to call the function clickNumber
-  let allNums = document.querySelectorAll('.number');
-  allNums.forEach(num => {
-    num.addEventListener('click', clickNumber);
+  let numberBtns = document.querySelectorAll('.number');
+  numberBtns.forEach(num => {
+    numberBtns.addEventListener('click', clickNumber);
   });
 
   // get a reference to the decimal point button
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // get a reference to the all clear button
   // add a click event listener to call the function clear 
 
-  let clearBtn = document.querySelector('.all-clear')
+  let clearBtn = document.querySelector('.all-clear');
   clearBtn.addEventListener('click', clear);
   
   
@@ -108,9 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let operators = querySelectorAll('.operator');
   operators.forEach(sign => {
-    sign.addEventListener('click', clickOperator);
+    sign.addEventListener('click', clickOperator)
 
-  })
+  });
 
   // add click event listener for the equal sign
   // should call the function performOperation
