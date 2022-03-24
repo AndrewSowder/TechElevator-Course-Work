@@ -36,3 +36,55 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  setPageTitle();
+  displayGroceries();
+
+  const allItemList = document.querySelectorAll('li');
+
+  allItemList.forEach((listItem) => {
+    listItem.addEventListener('click', () => {
+
+      if (!listItem.classList.contains('completed')) {
+        listItem.classList.add('completed');
+        listItem.querySelector('i').classList.add('completed');
+      }
+    });
+
+    listItem.addEventListener('dblclick', () => {
+
+      if (listItem.classList.contains('completed')) {
+        listItem.classList.remove('completed');
+        listItem.querySelector('i').classList.remove('completed');
+
+      }
+    });
+
+    const markAllBtn = document.getElementById('toggleAll');
+    let allItemsIncomplete = true;
+
+    markAllBtn.addEventListener('click', () => {
+      if (allItemsIncomplete === true) {
+        allItemList.forEach((item) => {
+          item.classList.add('completed');
+          listItem.querySelector('i').classList.add('completed');
+        })
+        allItemsIncomplete = false;
+        markAllBtn.innerHTML = "Mark All Incomplete "
+      } else {
+        allItemList.forEach((item) => {
+          item.classList.remove('completed');
+          listItem.querySelector('i').classList.remove('completed');
+        })
+        allItemsIncomplete = true;
+        markAllBtn.innerHTML = "Mark All Complete"
+
+      }
+
+    });
+  });
+});
+
+
