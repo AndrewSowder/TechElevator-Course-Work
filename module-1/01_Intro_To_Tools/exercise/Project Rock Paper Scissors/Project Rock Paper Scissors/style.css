@@ -1,0 +1,40 @@
+body{
+    background-color: aqua;
+}
+
+main{
+    display: grid;;
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+}
+
+header {
+
+    text-align: center;
+    grid-area: "header";
+}
+
+div {
+
+
+    display: flex;
+    text-align: center;
+    grid-area: "main";
+    justify-content: center;
+    align-items: center;
+}
+
+ol {
+    
+
+}
+
+li{
+    background-color: beige;
+    margin: 10px;
+    list-style: none;
+    display: block;
+    justify-items: center;
+}

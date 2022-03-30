@@ -61,29 +61,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       }
     });
-
     const markAllBtn = document.getElementById('toggleAll');
-    let allItemsIncomplete = true;
-
     markAllBtn.addEventListener('click', () => {
       if (allItemsIncomplete === true) {
-        allItemList.forEach((item) => {
-          item.classList.add('completed');
-          listItem.querySelector('i').classList.add('completed');
+        allItemList.forEach((listItem) => {
+          listItem.classList.add('completed');
+          item.querySelector('i').classList.add('completed');
         })
         allItemsIncomplete = false;
-        markAllBtn.innerHTML = "Mark All Incomplete "
+        markAllBtn.innerText = 'Mark All Incomplete';
+        
       } else {
-        allItemList.forEach((item) => {
-          item.classList.remove('completed');
-          listItem.querySelector('i').classList.remove('completed');
+        allItemList.forEach((listItem) => {
+          listItem.classList.remove('completed');
+          item.querySelector('i').classList.remove('completed');
         })
         allItemsIncomplete = true;
-        markAllBtn.innerHTML = "Mark All Complete"
-
+        markAllBtn.innerText = 'Mark All Complete';
+        
       }
-
     });
+
+    
   });
 });
 
