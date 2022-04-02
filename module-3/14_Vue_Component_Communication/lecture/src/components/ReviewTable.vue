@@ -1,7 +1,12 @@
-<template></template>
-
+ <template>
+ <review-display>
+  <review-list>  
+</template>
 <script>
+import ReviewDisplay from './ReviewDisplay.vue';
+import ReviewList from './ReviewList.vue';
 export default {
+  components: { ReviewList, ReviewDisplay },
   name: "review-table"
 };
 </script>

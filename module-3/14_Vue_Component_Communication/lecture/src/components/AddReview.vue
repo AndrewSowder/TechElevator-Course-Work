@@ -30,7 +30,7 @@
         <label for="review">Review:</label>
         <textarea id="review" v-model="newReview.review"></textarea>
       </div>
-      <input type="submit" value="Save" />
+      <input type="submit" value="Save" v-on:click="addNewReview"/>
       <input type="button" value="Cancel" v-on:click.prevent="resetForm" />
     </form>
   </div>
@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     addNewReview() {
+      this.$store.commit('ADD_REVIEW', this.newReview );
       this.resetForm();
     },
     resetForm() {

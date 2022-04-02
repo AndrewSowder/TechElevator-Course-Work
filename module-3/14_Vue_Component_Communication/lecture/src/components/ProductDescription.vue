@@ -1,0 +1,18 @@
+<template>
+<div id="app" class="main">
+    <h1>Product Reviews for {{ $store.state.name }} </h1>
+    <p class="description"> {{ $store.state.description }}</p>
+    <div class="well-display">
+</template>
+
+<script>
+export default {
+    name: "product-description"
+
+}
+</script>
+
+<style >
+
+
+</style>
