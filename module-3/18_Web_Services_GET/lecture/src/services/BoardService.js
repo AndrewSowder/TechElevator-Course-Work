@@ -4,6 +4,7 @@ const http = axios.create({
   baseURL: "http://localhost:3000"
 });
 
+
 export default {
 
   getBoards() {
@@ -19,6 +20,7 @@ export default {
       const cards = response.data.cards;
       return cards.find(card => card.id == cardID);
     })
-  }
+  },
+
 
 }

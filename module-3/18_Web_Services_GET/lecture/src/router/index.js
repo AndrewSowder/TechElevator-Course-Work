@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Board from '../views/Board.vue'
 import Card from '../views/Card.vue'
+import Dictionary from '../views/Dictionary.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +22,11 @@ const routes = [
     path: '/board/:boardID/card/:cardID',
     name: 'Card',
     component: Card
-  }
+  },
+  { path: '/definition',
+  name: 'Definition',
+  component: Dictionary
+}
 ]
 
 const router = new VueRouter({
