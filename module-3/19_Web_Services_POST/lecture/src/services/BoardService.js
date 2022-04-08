@@ -10,6 +10,10 @@ export default {
     return http.get('/boards');
   },
 
+  addBoard(board) {
+    return http.post('/boards', board);
+  },
+
   getCards(boardID) {
     return http.get(`/boards/${boardID}`)
   },
@@ -28,6 +32,10 @@ export default {
 
   deleteCard(cardID) {
     return http.delete(`/cards/${cardID}`);
+  },
+
+  deleteBoard(boardID) {
+    return http.delete(`/boards/${boardID}`);
   }
 
 }

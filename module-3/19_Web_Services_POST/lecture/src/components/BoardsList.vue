@@ -17,12 +17,12 @@
         {{ board.title }}
       </router-link>
       <button class="btn addBoard" v-if="!isLoading && !showAddBoard" v-on:click="showAddBoard = !showAddBoard">Add Board</button>
-      <form v-if="showAddBoard">
+      <form v-on:submit.prevent="saveNewBoard" v-if="showAddBoard">
         Board Title:
         <input type="text" class="form-control" v-model="newBoard.title" />
         Background Color:
         <input type="text" class="form-control" v-model="newBoard.backgroundColor" />
-        <button class="btn btn-submit" v-on:click="saveNewBoard">Save</button>
+        <button class="btn btn-submit" >Save</button>
         <button class="btn btn-cancel" v-on:click="showAddBoard = !showAddBoard">Cancel</button>
       </form>
     </div>
@@ -48,17 +48,34 @@ export default {
     this.retrieveBoards();
   },
   methods: {
-    retrieveBoards() {
+    retrieveBoards(boardID = -1) {
       boardsService.getBoards().then(response => {
+      
         this.$store.commit("SET_BOARDS", response.data);
         this.isLoading = false;
 
         if (this.$route.name == "Home" && response.status === 200 && response.data.length > 0) {
           this.$router.push(`/board/${response.data[0].id}`);
+        }else if (boardID !== -1){
+          this.$router.push(`/board/${boardID}`);
+
         }
       });
     },
     saveNewBoard() {
+      boardsService.addBoard(this.newBoard).then(response => {
+        if (response.status === 201) {
+              this.showAddBoard = false;
+              //this.$router.go({name: "Home"});
+              this.retrieveBoards(response.data.id)
+              this.newBoard.title = '';
+              this.newBoard.backgroundColor = this.randomBackgroundColor();
+              
+            }
+          })
+          .catch(error => {
+            this.handleErrorResponse(error, "adding");
+          });
 
     },
     randomBackgroundColor() {
